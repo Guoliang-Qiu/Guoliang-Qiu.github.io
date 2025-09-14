@@ -1,15 +1,327 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>我的个人主页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guoliang Qiu's Homepage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 40px; }
-        h1 { color: #333; }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --sidebar-width: 25%;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f7f9;
+        }
+        
+        .container-main {
+            display: flex;
+            max-width: 1200px;
+            margin: 2rem auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        /* Left sidebar styling */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+        }
+        
+        .profile-img {
+            width: 220px; /* 增大宽度 */
+            height: 260px; /* 增大高度 */
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px; /* 改为长方形圆角 */
+            margin: 0 auto 1.5rem;
+            display: block;
+            object-fit: cover;
+        }
+        
+        .sidebar h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar h2 {
+            font-size: 1rem;
+            text-align: center;
+            color: #ccc;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+        }
+        
+        .contact-info div {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Right content styling */
+        .content {
+            width: calc(100% - var(--sidebar-width));
+            padding: 2.5rem;
+        }
+        
+        .section-title {
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .pub-item {
+            margin-bottom: 1.2rem;
+            padding-left: 1rem;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .pub-item:hover {
+            border-left-color: var(--secondary-color);
+            background-color: var(--light-bg);
+            padding-left: 1.5rem;
+        }
+        
+        .pub-authors {
+            color: #555;
+            font-style: italic;
+        }
+        
+        .pub-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: block;
+            margin: 0.3rem 0;
+        }
+        
+        .pub-title:hover {
+            color: var(--secondary-color);
+        }
+        
+        .pub-venue {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        .year-group {
+            margin-bottom: 2.5rem;
+        }
+        
+        .year-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .container-main {
+                flex-direction: column;
+            }
+            
+            .sidebar, .content {
+                width: 100%;
+            }
+            
+            .sidebar {
+                text-align: center;
+            }
+            
+            .contact-info div {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .profile-img {
+                width: 180px;
+                height: 220px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>你好，世界！</h1>
-    <p>这是我的 GitHub Pages 个人主页。</p>
-    <p>我正在学习如何搭建它！</p>
+    <div class="container-main">
+        <!-- Left sidebar -->
+        <div class="sidebar">
+            <img src="myphoto1.jpg" alt="Guoliang Qiu" class="profile-img">
+            <h1>Guoliang Qiu, PhD</h1>
+            <h2>Researcher in Computer Science</h2>
+            
+            <div class="contact-info">
+                <div>
+                    <i class="bi bi-envelope"></i>
+                    <span>qiuguoliang2@huawei.com</span>
+                </div>
+                <div>
+                    <i class="bi bi-envelope"></i>
+                    <span>guoliang.qiu@sjtu.edu.cn</span>
+                </div>
+                                <div>
+                    <i class="bi bi-envelope"></i>
+                    <span>guoliang.qiu96@gmail.com</span>
+                </div>
+                <div>
+                    <i class="bi bi-geo-alt"></i>
+                    <span>Shanghai, China</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right content -->
+        <div class="content">
+            <!-- About Section -->
+            <section id="about" class="mb-5">
+                <h2 class="section-title">About Me</h2> 
+                <p>I am Guoliang Qiu (邱国良), a researcher at <a href="https://www.tcs-lab.com/">Huawei Taylor Lab</a>.</p>
+                <p>I earned my Ph.D. from the <a href="https://basics.sjtu.edu.cn">Basic Studies in Computing Science Lab</a> (BASICS) at <a href="https://www.sjtu.edu.cn">Shanghai Jiao Tong University</a> in June 2025, where I was fortunate to be advised by Prof. <a href="https://chihaozhang.com/">Chihao Zhang</a>.</p>
+                <p>I obtained my B.Eng. degree from the <a href="http://www.uestc.edu.cn/">University of Electronic Science and Technology of China</a> in June 2020, where I was advised by Prof. <a href = "https://sites.google.com/site/myxiao/">Mingyu Xiao</a>.</p>
+            </section>
+
+            <section id="interests" class="mb-5">
+                <h2 class="section-title">Research Interests</h2>
+            </section>
+            
+            <!-- Publications Section -->
+            <section id="publications">
+                <h2 class="section-title">Publications</h2>
+                
+                <!-- 2025 Publications -->
+                <div class="year-group">
+                    <h3><span class="year-badge">2025</span></h3>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Panfeng Liu, Guoliang Qiu, Biaoshuai Tao, Kuan Yang</div>
+                        <a href="#" class="pub-title">A Thorough Comparison Between Independent Cascade and Susceptible-Infected-Recovered Models</a>
+                        <div class="pub-venue">AAAI 2025: 487-495</div>
+                    </div>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Kun He, Zhidan Li, Guoliang Qiu, Chihao Zhang</div>
+                        <a href="#" class="pub-title">FPTAS for Holant Problems with Log-Concave Signatures</a>
+                        <div class="pub-venue">SODA 2025: 5468-5503</div>
+                    </div>
+                </div>
+                
+                <!-- 2024 Publications -->
+                <div class="year-group">
+                    <h3><span class="year-badge">2024</span></h3>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Guoliang Qiu, Jiaheng Wang</div>
+                        <a href="#" class="pub-title">Inapproximability of counting independent sets in linear hypergraphs</a>
+                        <div class="pub-venue">Inf. Process. Lett. 184: 106448 (2024)</div>
+                    </div>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Kun He, Zhidan Li, Guoliang Qiu, Chihao Zhang</div>
+                        <a href="#" class="pub-title">FPTAS for Holant Problems with Log-Concave Signatures</a>
+                        <div class="pub-venue">CoRR abs/2407.04989 (2024)</div>
+                    </div>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Panfeng Liu, Guoliang Qiu, Biaoshuai Tao, Kuan Yang</div>
+                        <a href="#" class="pub-title">A Thorough Comparison Between Independent Cascade and Susceptible-Infected-Recovered Models</a>
+                        <div class="pub-venue">CoRR abs/2408.11470 (2024)</div>
+                    </div>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Kun He, Guoliang Qiu, Xiaoming Sun</div>
+                        <a href="#" class="pub-title">Sampling Permutations Satisfying Constraints within and beyond the Local Lemma Regime</a>
+                        <div class="pub-venue">CoRR abs/2411.02750 (2024)</div>
+                    </div>
+                </div>
+                
+                <!-- 2023 Publications -->
+                <div class="year-group">
+                    <h3><span class="year-badge">2023</span></h3>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Yuqiao He, Guoliang Qiu, Chihao Zhang</div>
+                        <a href="#" class="pub-title">Approximability of the complementarily symmetric Holant problems on cubic graphs</a>
+                        <div class="pub-venue">Theor. Comput. Sci. 975: 114140 (2023)</div>
+                    </div>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Mingyu Xiao, Guoliang Qiu, Sen Huang</div>
+                        <a href="#" class="pub-title">MMS Allocations of Chores with Connectivity Constraints: New Methods and New Results</a>
+                        <div class="pub-venue">AAMAS 2023: 2886-2888</div>
+                    </div>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Guoliang Qiu, Yilong Feng, Shengwei Zhou, Xiaowei Wu</div>
+                        <a href="#" class="pub-title">Improved Competitive Ratio for Edge-Weighted Online Stochastic Matching</a>
+                        <div class="pub-venue">WINE 2023: 527-544</div>
+                    </div>
+                </div>
+                
+                <!-- 2022 Publications -->
+                <div class="year-group">
+                    <h3><span class="year-badge">2022</span></h3>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Guoliang Qiu, Yanheng Wang, Chihao Zhang</div>
+                        <a href="#" class="pub-title">A Perfect Sampler for Hypergraph Independent Sets</a>
+                        <div class="pub-venue">ICALP 2022: 103:1-103:16</div>
+                    </div>
+                    
+                    <div class="pub-item">
+                        <div class="pub-authors">Guoliang Qiu, Jiaheng Wang</div>
+                        <a href="#" class="pub-title">Inapproximability of counting independent sets in linear hypergraphs</a>
+                        <div class="pub-venue">CoRR abs/2212.03072 (2022)</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
