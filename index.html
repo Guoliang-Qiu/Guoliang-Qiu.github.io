@@ -3,319 +3,504 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guoliang Qiu's Homepage</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Guoliang Qiu - Homepage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-bg: #f8f9fa;
-            --sidebar-width: 25%;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background-color: #f5f7f9;
+            font-family: "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            color: #2c3e50;
+            line-height: 1.8;
+            min-height: 100vh;
         }
         
-        .container-main {
-            display: flex;
-            max-width: 1200px;
-            margin: 2rem auto;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            background: white;
-            border-radius: 8px;
+        .wrapper {
+            max-width: 1000px;
+            margin: 50px auto;
+            background: #fff;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
             overflow: hidden;
         }
         
-        /* Left sidebar styling */
-        .sidebar {
-            width: var(--sidebar-width);
-            background: var(--primary-color);
+        /* Header */
+        .header {
+            background: linear-gradient(120deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+            padding: 50px;
             color: white;
-            padding: 2rem;
+            position: relative;
+            overflow: hidden;
         }
         
-        .profile-img {
-            width: 220px; /* 增大宽度 */
-            height: 260px; /* 增大高度 */
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px; /* 改为长方形圆角 */
-            margin: 0 auto 1.5rem;
-            display: block;
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .photo-frame {
+            width: 230px;
+            height: 280px;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
         
-        .sidebar h1 {
-            font-size: 1.5rem;
-            text-align: center;
-            margin-bottom: 0.5rem;
+        .header-info h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
-        .sidebar h2 {
-            font-size: 1rem;
-            text-align: center;
-            color: #ccc;
+        .header-info .role {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            margin-bottom: 20px;
             font-weight: 400;
-            margin-bottom: 2rem;
         }
         
         .contact-info {
-            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
         
-        .contact-info div {
-            margin-bottom: 1rem;
+        .contact-info a {
+            color: white;
+            text-decoration: none;
             display: flex;
             align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+        
+        .contact-info a:hover {
+            opacity: 1;
         }
         
         .contact-info i {
-            margin-right: 10px;
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            width: 24px;
+            width: 18px;
         }
         
-        .social-links {
+        .location {
             display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            gap: 15px;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 8px;
         }
         
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--secondary-color);
-        }
-        
-        /* Right content styling */
+        /* Main Content */
         .content {
-            width: calc(100% - var(--sidebar-width));
-            padding: 2.5rem;
+            padding: 45px 50px;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+        }
+        
+        .section:last-child {
+            margin-bottom: 0;
         }
         
         .section-title {
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
+            font-family: "Lora", serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e8ecf1;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #1e3c72, #667eea);
+        }
+        
+        .about-text {
+            font-family: "Lora", serif;
+            font-size: 1.02rem;
+            color: #3d4a5c;
+            line-height: 1.9;
+        }
+        
+        .about-text p {
+            margin-bottom: 14px;
+            text-align: justify;
+        }
+        
+        .about-text a {
+            color: #2a5298;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+            font-weight: 500;
+        }
+        
+        .about-text a:hover {
+            border-bottom-color: #2a5298;
+        }
+        
+        /* Interests */
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .interest-tag {
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            color: #2c3e50;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+            transition: all 0.25s ease;
+        }
+        
+        .interest-tag:hover {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30,60,114,0.25);
+        }
+        
+        /* Publications */
+        .year-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e3c72;
+            margin: 30px 0 18px 0;
+            padding-left: 15px;
+            border-left: 4px solid #1e3c72;
         }
         
         .pub-item {
-            margin-bottom: 1.2rem;
-            padding-left: 1rem;
-            border-left: 3px solid transparent;
-            transition: all 0.3s ease;
+            padding: 18px 22px;
+            margin-bottom: 15px;
+            background: #fafbfc;
+            border-radius: 8px;
+            border: 1px solid #edf2f7;
+            transition: all 0.25s ease;
         }
         
         .pub-item:hover {
-            border-left-color: var(--secondary-color);
-            background-color: var(--light-bg);
-            padding-left: 1.5rem;
+            background: #fff;
+            border-color: #c3d5e8;
+            box-shadow: 0 4px 15px rgba(30,60,114,0.08);
+            transform: translateY(-1px);
         }
         
         .pub-authors {
-            color: #555;
+            font-family: "Lora", serif;
+            font-size: 0.9rem;
+            color: #5a6a7a;
+            margin-bottom: 6px;
             font-style: italic;
         }
         
         .pub-title {
-            font-weight: 600;
-            color: var(--primary-color);
+            font-family: "Lora", serif;
+            font-size: 1.02rem;
+            font-weight: 500;
+            color: #2c3e50;
             text-decoration: none;
             display: block;
-            margin: 0.3rem 0;
+            margin-bottom: 8px;
+            line-height: 1.5;
         }
         
         .pub-title:hover {
-            color: var(--secondary-color);
+            color: #1e3c72;
         }
         
-        .pub-venue {
-            color: var(--secondary-color);
+        .pub-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .venue-tag {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .preprint-tag {
+            background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .arxiv-link {
+            color: #2a5298;
+            font-size: 0.85rem;
+            text-decoration: none;
             font-weight: 500;
         }
         
-        .year-group {
-            margin-bottom: 2.5rem;
+        .arxiv-link:hover {
+            text-decoration: underline;
         }
         
-        .year-badge {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            display: inline-block;
+        /* Footer */
+        .footer {
+            background: #f8fafc;
+            padding: 25px;
+            text-align: center;
+            border-top: 1px solid #edf2f7;
         }
         
-        /* Responsive design */
-        @media (max-width: 992px) {
-            .container-main {
+        .footer p {
+            color: #718096;
+            font-size: 0.85rem;
+        }
+        
+        .footer .credit {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: #a0aec0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .wrapper {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 35px 25px;
+            }
+            
+            .header-content {
                 flex-direction: column;
-            }
-            
-            .sidebar, .content {
-                width: 100%;
-            }
-            
-            .sidebar {
                 text-align: center;
             }
             
-            .contact-info div {
-                justify-content: center;
+            .header-info h1 {
+                font-size: 1.8rem;
             }
-        }
-        
-        @media (max-width: 576px) {
-            .profile-img {
-                width: 180px;
-                height: 220px;
+            
+            .contact-info, .location {
+                align-items: center;
+            }
+            
+            .content {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container-main">
-        <!-- Left sidebar -->
-        <div class="sidebar">
-            <img src="myphoto1.jpg" alt="Guoliang Qiu" class="profile-img">
-            <h1>Guoliang Qiu</h1>
-            
-            <div class="contact-info">
-                <div>
-                    <i class="bi bi-envelope"></i>
-                    <span>qiuguoliang2@huawei.com</span>
+    <div class="wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="photo-frame">
+                    <img src="myphoto1.jpg" alt="Guoliang Qiu">
                 </div>
-                <div>
-                    <i class="bi bi-envelope"></i>
-                    <span>guoliang.qiu96@gmail.com</span>
-                </div>
-                <div>
-                    <i class="bi bi-geo-alt"></i>
-                    <span>Shanghai, China</span>
+                <div class="header-info">
+                    <h1>Guoliang Qiu</h1>
+                    <p class="role">Researcher, Huawei Taylor Lab</p>
+                    <div class="contact-info">
+                        <a href="mailto:qiuguoliang2@huawei.com">
+                            <i class="bi bi-envelope-fill"></i>
+                            qiuguoliang2@huawei.com
+                        </a>
+                        <a href="mailto:guoliang.qiu96@gmail.com">
+                            <i class="bi bi-envelope"></i>
+                            guoliang.qiu96@gmail.com
+                        </a>
+                    </div>
+                    <div class="location">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        Shanghai, China
+                    </div>
                 </div>
             </div>
-        </div>
+        </header>
         
-        <!-- Right content -->
-        <div class="content">
-            <!-- About Section -->
-            <section id="about" class="mb-5">
-                <h2 class="section-title">About Me</h2> 
-                <p>I am Guoliang Qiu (邱国良), a researcher at <a href="https://www.tcs-lab.com/">Huawei Taylor Lab</a>.</p>
-                <p>I earned my Ph.D. from the <a href="https://basics.sjtu.edu.cn">Basic Studies in Computing Science Lab</a> (BASICS) at <a href="https://www.sjtu.edu.cn">Shanghai Jiao Tong University</a> in June 2025, where I was fortunate to be advised by Prof. <a href="https://chihaozhang.com/">Chihao Zhang</a>.</p>
-                <p>I obtained my B.Eng. degree from the <a href="http://www.uestc.edu.cn/">University of Electronic Science and Technology of China</a> in June 2020, where I was advised by Prof. <a href = "https://sites.google.com/site/myxiao/">Mingyu Xiao</a>.</p>
+        <!-- Main Content -->
+        <main class="content">
+            <!-- About -->
+            <section class="section">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-text">
+                    <p>I am Guoliang Qiu (邱国良), a researcher at <a href="https://www.tcs-lab.com/" target="_blank">Huawei Taylor Lab</a>.</p>
+                    <p>I earned my Ph.D. from the <a href="https://basics.sjtu.edu.cn" target="_blank">Basic Studies in Computing Science Lab</a> (BASICS) at <a href="https://www.sjtu.edu.cn" target="_blank">Shanghai Jiao Tong University</a> in June 2025, where I was fortunate to be advised by Prof. <a href="https://chihaozhang.com/" target="_blank">Chihao Zhang</a>.</p>
+                    <p>I obtained my B.Eng. degree from the <a href="http://www.uestc.edu.cn/" target="_blank">University of Electronic Science and Technology of China</a> in June 2020, where I was advised by Prof. <a href="https://sites.google.com/site/myxiao/" target="_blank">Mingyu Xiao</a>.</p>
+                </div>
             </section>
-
-            <section id="interests" class="mb-5">
-                <h2 class="section-title">Research Interest</h2>
-                <p>My research interest lies broadly in theoretical computer science (TCS). Previously, I focus on counting & sampling and online combinatorial optimization.</p>
+            
+            <!-- Research Interests -->
+            <section class="section">
+                <h2 class="section-title">Research Interests</h2>
+                <div class="interests">
+                    <span class="interest-tag">Theoretical Computer Science</span>
+                    <span class="interest-tag">Counting & Sampling</span>
+                    <span class="interest-tag">Online Optimization</span>
+                    <span class="interest-tag">Algorithms</span>
+                </div>
             </section>
-
-
             
-            
-            <!-- Publications Section -->
-            <section id="publications">
+            <!-- Publications -->
+            <section class="section">
                 <h2 class="section-title">Publications</h2>
-                <p><em>Notation: (αβ) means authors are listed alphabetically.</em></p>
-                <!-- 2025 Publications -->
-                <div class="year-group">
-                    <h3><span class="year-badge">2025</span></h3>
-                    
-                    <div class="pub-item">
-                        <div class="pub-authors">(αβ) <a href="https://wozhendeluanle.github.io/">Panfeng Liu</a>, Guoliang Qiu, <a href="https://jhc.sjtu.edu.cn/~bstao/">Biaoshuai Tao</a>, <a href="https://jhc.sjtu.edu.cn/~kuanyang/">Kuan Yang</a></div>
-                        <a href="https://arxiv.org/abs/2408.11470 " class="pub-title"> A Thorough Comparison Between Independent Cascade and Susceptible-Infected-Recovered Models</a>
-                        <div class="pub-venue">AAAI 2025</div>
-                    </div>
-                    
-                    <div class="pub-item">
-                        <div class="pub-authors">(αβ) <a href="https://hekun-theory.com/">Kun He</a>, <a href="https://lizhidan00.github.io/">Zhidan Li</a>, Guoliang Qiu, <a href="https://chihaozhang.com/">Chihao Zhang</a></div>
-                        <a href="https://arxiv.org/abs/2407.04989" class="pub-title"> FPTAS for Holant Problems with Log-Concave Signatures</a>
-                        <div class="pub-venue">SODA 2025</div>
+                <p style="color:#a0aec0;font-size:0.85rem;margin-bottom:20px;"><em>Notation: (αβ) means authors are listed alphabetically.</em></p>
+                
+                <div class="year-heading">2025</div>
+                
+                <div class="pub-item">
+                    <div class="pub-authors">(αβ) <a href="https://wozhendeluanle.github.io/" target="_blank">Panfeng Liu</a>, Guoliang Qiu, <a href="https://jhc.sjtu.edu.cn/~bstao/" target="_blank">Biaoshuai Tao</a>, <a href="https://jhc.sjtu.edu.cn/~kuanyang/" target="_blank">Kuan Yang</a></div>
+                    <a href="https://arxiv.org/abs/2408.11470" class="pub-title" target="_blank">A Thorough Comparison Between Independent Cascade and Susceptible-Infected-Recovered Models</a>
+                    <div class="pub-meta">
+                        <span class="venue-tag">AAAI 2025</span>
+                        <a href="https://arxiv.org/abs/2408.11470" class="arxiv-link" target="_blank">[arXiv]</a>
                     </div>
                 </div>
                 
-                <!-- 2024 Publications -->
-                <div class="year-group">
-                    <h3><span class="year-badge">2024</span></h3>
-                    
-                    <div class="pub-item">
-                        <div class="pub-authors">(αβ) Guoliang Qiu, <a href="https://pw384.github.io/">Jiaheng Wang</a></div>
-                        <a href="https://arxiv.org/abs/2212.03072" class="pub-title">Inapproximability of Counting Independent Sets in Linear Hypergraphs</a>
-                        <div class="pub-venue">IPL 2024</div>
+                <div class="pub-item">
+                    <div class="pub-authors">(αβ) <a href="https://hekun-theory.com/" target="_blank">Kun He</a>, <a href="https://lizhidan00.github.io/" target="_blank">Zhidan Li</a>, Guoliang Qiu, <a href="https://chihaozhang.com/" target="_blank">Chihao Zhang</a></div>
+                    <a href="https://arxiv.org/abs/2407.04989" class="pub-title" target="_blank">FPTAS for Holant Problems with Log-Concave Signatures</a>
+                    <div class="pub-meta">
+                        <span class="venue-tag">SODA 2025</span>
+                        <a href="https://arxiv.org/abs/2407.04989" class="arxiv-link" target="_blank">[arXiv]</a>
                     </div>
-        
                 </div>
                 
-                <!-- 2023 Publications -->
-                <div class="year-group">
-                    <h3><span class="year-badge">2023</span></h3>
-                                        
-                    <div class="pub-item">
-                        <div class="pub-authors">Guoliang Qiu, Yilong Feng, <a href="https://sites.google.com/view/shengweizhou/">Shengwei Zhou</a>, <a href="https://sites.google.com/site/wxw0711/">Xiaowei Wu</a></div>
-                        <a href="https://link.springer.com/chapter/10.1007/978-3-031-48974-7_30" class="pub-title">Improved Competitive Ratio for Edge-Weighted Online Stochastic Matching</a>
-                        <div class="pub-venue">WINE 2023</div>
+                <div class="year-heading">2024</div>
+                
+                <div class="pub-item">
+                    <div class="pub-authors">(αβ) Guoliang Qiu, <a href="https://pw384.github.io/" target="_blank">Jiaheng Wang</a></div>
+                    <a href="https://arxiv.org/abs/2212.03072" class="pub-title" target="_blank">Inapproximability of Counting Independent Sets in Linear Hypergraphs</a>
+                    <div class="pub-meta">
+                        <span class="venue-tag">IPL 2024</span>
+                        <a href="https://arxiv.org/abs/2212.03072" class="arxiv-link" target="_blank">[arXiv]</a>
                     </div>
-
-                    <div class="pub-item">
-                        <div class="pub-authors">(αβ) Yuqiao He, Guoliang Qiu, <a href="https://chihaozhang.com/">Chihao Zhang</a></div>
-                        <a href="https://www.sciencedirect.com/science/article/abs/pii/S030439752300453X" class="pub-title">Approximability of the Complementarily Symmetric Holant Problems on Cubic Graphs</a>
-                        <div class="pub-venue">TCS 2023</div>
-                    </div>
-                    
-                    <div class="pub-item">
-                        <div class="pub-authors"><a href = "https://sites.google.com/site/myxiao/">Mingyu Xiao</a>, Guoliang Qiu, Sen Huang</div>
-                        <a href="https://arxiv.org/abs/2302.13224" class="pub-title">MMS Allocations of Chores with Connectivity Constraints: New Methods and New Results</a>
-                        <div class="pub-venue">AAMAS 2023</div>
-                    </div>
-
                 </div>
                 
-                <!-- 2022 Publications -->
-                <div class="year-group">
-                    <h3><span class="year-badge">2022</span></h3>
-                    
-                    <div class="pub-item">
-                        <div class="pub-authors">(αβ) Guoliang Qiu, <a href="https://yanhengwang.github.io/">Yanheng Wang</a>, <a href="https://chihaozhang.com/">Chihao Zhang</a></div>
-                        <a href="https://arxiv.org/abs/2205.02050" class="pub-title">A Perfect Sampler for Hypergraph Independent Sets</a>
-                        <div class="pub-venue">ICALP 2022</div>
+                <div class="year-heading">2023</div>
+                
+                <div class="pub-item">
+                    <div class="pub-authors">Guoliang Qiu, Yilong Feng, <a href="https://sites.google.com/view/shengweizhou/" target="_blank">Shengwei Zhou</a>, <a href="https://sites.google.com/site/wxw0711/" target="_blank">Xiaowei Wu</a></div>
+                    <a href="https://link.springer.com/chapter/10.1007/978-3-031-48974-7_30" class="pub-title" target="_blank">Improved Competitive Ratio for Edge-Weighted Online Stochastic Matching</a>
+                    <div class="pub-meta">
+                        <span class="venue-tag">WINE 2023</span>
+                    </div>
+                </div>
+                
+                <div class="pub-item">
+                    <div class="pub-authors">(αβ) Yuqiao He, Guoliang Qiu, <a href="https://chihaozhang.com/" target="_blank">Chihao Zhang</a></div>
+                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S030439752300453X" class="pub-title" target="_blank">Approximability of the Complementarily Symmetric Holant Problems on Cubic Graphs</a>
+                    <div class="pub-meta">
+                        <span class="venue-tag">TCS 2023</span>
+                    </div>
+                </div>
+                
+                <div class="pub-item">
+                    <div class="pub-authors"><a href="https://sites.google.com/site/myxiao/" target="_blank">Mingyu Xiao</a>, Guoliang Qiu, Sen Huang</div>
+                    <a href="https://arxiv.org/abs/2302.13224" class="pub-title" target="_blank">MMS Allocations of Chores with Connectivity Constraints: New Methods and New Results</a>
+                    <div class="pub-meta">
+                        <span class="venue-tag">AAMAS 2023</span>
+                        <a href="https://arxiv.org/abs/2302.13224" class="arxiv-link" target="_blank">[arXiv]</a>
+                    </div>
+                </div>
+                
+                <div class="year-heading">2022</div>
+                
+                <div class="pub-item">
+                    <div class="pub-authors">(αβ) Guoliang Qiu, <a href="https://yanhengwang.github.io/" target="_blank">Yanheng Wang</a>, <a href="https://chihaozhang.com/" target="_blank">Chihao Zhang</a></div>
+                    <a href="https://arxiv.org/abs/2205.02050" class="pub-title" target="_blank">A Perfect Sampler for Hypergraph Independent Sets</a>
+                    <div class="pub-meta">
+                        <span class="venue-tag">ICALP 2022</span>
+                        <a href="https://arxiv.org/abs/2205.02050" class="arxiv-link" target="_blank">[arXiv]</a>
                     </div>
                 </div>
             </section>
-
-            <section id="publications">
+            
+            <!-- Preprints -->
+            <section class="section">
                 <h2 class="section-title">Preprints</h2>
                 
+                <div class="year-heading">2024</div>
                 
-                <!-- 2024 Publications -->
-                <div class="year-group">
-                    <h3><span class="year-badge">2024</span></h3>
-                    
-                    <div class="pub-item">
-                        <div class="pub-authors">(αβ) <a href="https://hekun-theory.com/">Kun He</a>, Guoliang Qiu, <a href="http://english.ict.cas.cn/people/scien/bln/202303/t20230315_328241.html">Xiaoming Sun</a></div>
-                        <a href="https://arxiv.org/abs/2411.02750" class="pub-title">Sampling Permutations Satisfying Constraints within the Lopsided Local Lemma Regime</a>
+                <div class="pub-item">
+                    <div class="pub-authors">(αβ) <a href="https://hekun-theory.com/" target="_blank">Kun He</a>, Guoliang Qiu, <a href="http://english.ict.cas.cn/people/scien/bln/202303/t20230315_328241.html" target="_blank">Xiaoming Sun</a></div>
+                    <a href="https://arxiv.org/abs/2411.02750" class="pub-title" target="_blank">Sampling Permutations Satisfying Constraints within the Lopsided Local Lemma Regime</a>
+                    <div class="pub-meta">
+                        <span class="preprint-tag">Preprint</span>
+                        <a href="https://arxiv.org/abs/2411.02750" class="arxiv-link" target="_blank">[arXiv]</a>
                     </div>
                 </div>
-                
             </section>
-    
-        </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Guoliang Qiu. Last updated: March 2025.</p>
+            <p class="credit">Designed with assistance from AI</p>
+        </footer>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
